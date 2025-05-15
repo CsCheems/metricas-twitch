@@ -40,3 +40,5 @@ async function actualizarMetricas() {
 }
 
 actualizarMetricas();
+
+//https://decapi.me/auth/twitch?redirect=subcount&scopes=channel:read:subscriptions+user:read:email
