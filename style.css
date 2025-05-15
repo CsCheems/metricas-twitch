@@ -1,0 +1,23 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Blinker:wght@100;200;300;400;600;700;800;900&family=Cal+Sans&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#main-container{
+    text-align: center;
+    font-size: 40px;
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: #fff;
+    text-shadow: rgb(0, 0, 0) 4px 4px 4px;
+
+}
+
+.metricas{
+    padding: 0 10px;
+}

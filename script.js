@@ -3,15 +3,15 @@ const parametrosUrl = new URLSearchParams(queryString);
 const usuario = parametrosUrl.get("usuario");
 
 async function obtenerVistas() {
-    const resp = await fetch(`https://decapi.me/twitch/viewercount/${usuario}`);
-    const vistas =  resp.text;
+    const response = await fetch(`https://decapi.me/twitch/viewercount/${usuario}`);
+    const vistas = await response.text();
     
     return isNaN(Number(vistas)) ? 0 :  Number(vistas);
 }
 
 async function obtenerSubs(){
-    const resp = await fetch(`https://decapi.me/twitch/subcount/${usuario}`);
-    const subs = resp.text;
+    const response = await fetch(`https://decapi.me/twitch/subcount/${usuario}`);
+    const subs = await response.text();
 
     if(subs.includes('decapi.me')){
         return '-';
@@ -21,8 +21,8 @@ async function obtenerSubs(){
 }
 
 async function obtenerSeguidores(){
-    const resp = await fetch(`https://decapi.me/twitch/followcount/${usuario}`);
-    const seguidores = resp.text;
+    const response = await fetch(`https://decapi.me/twitch/followcount/${usuario}`);
+    const seguidores = await response.text();
 
     if(seguidores.includes('decapi.me')){
         return '-';
