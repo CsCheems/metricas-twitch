@@ -30,3 +30,48 @@ html, body {
 .metricas{
     padding: 0 10px;
 }
+
+
+/******/
+
+/* .overlay-contador {
+    position: fixed;
+    width: 90%;
+    top: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-family: sans-serif;
+    z-index: 1000;
+}
+
+.contenedor-principal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nombre {
+    font-weight: bold;
+    text-align: center;
+    min-width: 100px;
+}
+
+.contenedor-resultados {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resultado {
+    font-size: 1.5em;
+    min-width: 40px;
+    text-align: center;
+}
+
+.separador {
+    font-size: 1.5em;
+} */
+
+/* Opcional: Ajusta el ancho total del overlay si es necesario */

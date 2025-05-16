@@ -1,6 +1,46 @@
 const queryString = window.location.search;
 const parametrosUrl = new URLSearchParams(queryString);
-const usuario = parametrosUrl.get("usuario");
+const usuario = parametrosUrl.get("usuarioTwitch");
+const mostrarVistas = obtenerBooleanos("mostrarVistas", true);
+const mostrarSubs = obtenerBooleanos("mostrarSubs", true);
+const mostrarSeguidores = obtenerBooleanos("mostrarSeguidores", true);
+const tamanoFuente = urlParameters.get("tamañoFuente") || "40";
+const widgetColor = urlParameters.get("widgetColor") || "#FFFFFF";
+const mostrarSombra = obtenerBooleanos("mostrarSombra", true);
+const sombraColor = urlParameters.get("sombraColor") || "#000000";
+
+const main_container = document.getElementById("main-container");
+main_container.style.fontSize = `${tamanoFuente}px`;
+main_container.style.color = widgetColor;
+
+
+const hexToRgb = (hex) => {
+  const cleanHex = hex.replace("#", "");
+  const bigint = parseInt(cleanHex, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return { r, g, b };
+};
+
+const {r, g, b} = hexToRgb(sombraColor);
+main_container.style.textShadow = `rgb(${r}, ${g}, ${b},) 2px 2px 4px`;
+
+const metricasVistas = document.getElementById("metricas-vistas");
+const metricasSubs = document.getElementById("metricas-subs");
+const metricasSeguidores = document.getElementById("metricas-seguidores");
+
+if(!mostrarVistas){
+    metricasVistas.style.display = "none";
+}
+
+if(!mostrarSubs){
+    metricasSubs.style.display = "none";
+}
+
+if(!mostrarSeguidores){
+    metricasSeguidores.style.display = "none";
+}
 
 async function obtenerVistas() {
     const response = await fetch(`https://decapi.me/twitch/viewercount/${usuario}`);
@@ -42,3 +82,25 @@ async function actualizarMetricas() {
 actualizarMetricas();
 
 //https://decapi.me/auth/twitch?redirect=subcount&scopes=channel:read:subscriptions+user:read:email
+
+//HELPERS//
+
+function obtenerBooleanos(parametro, valor){
+    const urlParams = new URLSearchParams(window.location.search);
+
+    console.log(urlParams);
+
+    const valorParametro = urlParams.get(parametro);
+
+    if(valorParametro === null){
+        return valor;
+    }
+
+    if(valorParametro === 'true'){
+        return true;
+    }else if(valorParametro === 'false'){
+        return false;
+    }else{
+        return valor;
+    }
+}
