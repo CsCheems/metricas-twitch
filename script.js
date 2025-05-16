@@ -6,30 +6,10 @@ const mostrarSubs = obtenerBooleanos("mostrarSubs", true);
 const mostrarSeguidores = obtenerBooleanos("mostrarSeguidores", true);
 const tamanoFuente = parametrosUrl.get("tamañoFuente") || "40";
 const widgetColor = parametrosUrl.get("widgetColor") || "#FFFFFF";
-const mostrarSombra = obtenerBooleanos("mostrarSombra", true);
-const sombraColor = parametrosUrl.get("sombraColor") || "#000000";
 
 const main_container = document.getElementById("main-container");
 main_container.style.fontSize = `${tamanoFuente}px`;
 main_container.style.color = widgetColor;
-
-
-const hexToRgb = (hex) => {
-  const cleanHex = hex.replace("#", "");
-  const bigint = parseInt(cleanHex, 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-  return { r, g, b };
-};
-
-const {r, g, b} = hexToRgb(sombraColor);
-if(mostrarSombra){
-    main_container.style.textShadow = `rgb(${r}, ${g}, ${b},) 2px 2px 4px`;
-}else{
-    main_container.style.textShadow = `rgb(${r}, ${g}, ${b},) 0px 0px 0px`;
-
-}
 
 const metricasVistas = document.getElementById("metricas-vistas");
 const metricasSubs = document.getElementById("metricas-subs");
