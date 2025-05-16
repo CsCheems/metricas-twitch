@@ -24,7 +24,12 @@ const hexToRgb = (hex) => {
 };
 
 const {r, g, b} = hexToRgb(sombraColor);
-main_container.style.textShadow = `rgb(${r}, ${g}, ${b},) 2px 2px 4px`;
+if(mostrarSombra){
+    main_container.style.textShadow = `rgb(${r}, ${g}, ${b},) 2px 2px 4px`;
+}else{
+    main_container.style.textShadow = `rgb(${r}, ${g}, ${b},) 0px 0px 0px`;
+
+}
 
 const metricasVistas = document.getElementById("metricas-vistas");
 const metricasSubs = document.getElementById("metricas-subs");
@@ -53,22 +58,14 @@ async function obtenerSubs(){
     const response = await fetch(`https://decapi.me/twitch/subcount/${usuario}`);
     const subs = await response.text();
 
-    if(subs.includes('decapi.me')){
-        return '-';
-    }else{
-        return subs;
-    }
+    return isNaN(Number(subs)) ? 0 :  Number(subs);
 }
 
 async function obtenerSeguidores(){
     const response = await fetch(`https://decapi.me/twitch/followcount/${usuario}`);
     const seguidores = await response.text();
 
-    if(seguidores.includes('decapi.me')){
-        return '-';
-    }else{
-        return seguidores;
-    }
+    return isNaN(Number(seguidores)) ? 0 :  Number(seguidores);
 }
 
 async function actualizarMetricas() {
