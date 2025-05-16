@@ -4,10 +4,10 @@ const usuario = parametrosUrl.get("usuarioTwitch");
 const mostrarVistas = obtenerBooleanos("mostrarVistas", true);
 const mostrarSubs = obtenerBooleanos("mostrarSubs", true);
 const mostrarSeguidores = obtenerBooleanos("mostrarSeguidores", true);
-const tamanoFuente = urlParameters.get("tamañoFuente") || "40";
-const widgetColor = urlParameters.get("widgetColor") || "#FFFFFF";
+const tamanoFuente = parametrosUrl.get("tamañoFuente") || "40";
+const widgetColor = parametrosUrl.get("widgetColor") || "#FFFFFF";
 const mostrarSombra = obtenerBooleanos("mostrarSombra", true);
-const sombraColor = urlParameters.get("sombraColor") || "#000000";
+const sombraColor = parametrosUrl.get("sombraColor") || "#000000";
 
 const main_container = document.getElementById("main-container");
 main_container.style.fontSize = `${tamanoFuente}px`;
