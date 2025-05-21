@@ -30,21 +30,18 @@ if(!mostrarSeguidores){
 async function obtenerVistas() {
     const response = await fetch(`https://decapi.me/twitch/viewercount/${usuario}`);
     const vistas = await response.text();
-    
     return isNaN(Number(vistas)) ? 0 :  Number(vistas);
 }
 
 async function obtenerSubs(){
     const response = await fetch(`https://decapi.me/twitch/subcount/${usuario}`);
     const subs = await response.text();
-
     return isNaN(Number(subs)) ? 0 :  Number(subs);
 }
 
 async function obtenerSeguidores(){
     const response = await fetch(`https://decapi.me/twitch/followcount/${usuario}`);
     const seguidores = await response.text();
-
     return isNaN(Number(seguidores)) ? 0 :  Number(seguidores);
 }
 
